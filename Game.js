@@ -61,7 +61,7 @@ resButton.addEventListener("click", function (e) {
 
         redColor()
         console.log("Başlatılmadı veya Seçim yapılmadı..")
-        return;
+        //return;
     }
 
     for (let i = 0; i < toFindData.length; i++) {
