@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            width: 300px;
+            height: 300px;
+        }
+
+        .grid-container a {
+            display: flex;
+            /* border: 1px solid black; */
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .bg-white {
+            background-color: white;
+
+        }
+
+        .bg-blue {
+            background-color: blue;
+
+        }
+
+        .bg-red {
+
+            background-color: red;
+
+        }
+
+        .bg-same {
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <a href="#" class="grid-item">0</a>
+        <a href="#" class="grid-item">1</a>
+        <a href="#" class="grid-item">2</a>
+        <a href="#" class="grid-item">3</a>
+        <a href="#" class="grid-item">4</a>
+        <a href="#" class="grid-item">5</a>
+        <a href="#" class="grid-item">6</a>
+        <a href="#" class="grid-item">7</a>
+        <a href="#" class="grid-item">8</a>
+    </div>
+    <div class="butonlar" style="display: flex;">
+        <div class="addButton">
+            <input type="button" value="Başlat">
+        </div>
+        <div class="resultButton">
+            <input type="button" value="Result">
+        </div>
+        <div class="delButton">
+            <input type="button" value="Reset">
+        </div>
+    </div>
+    <div class="results">
+
+    </div>
+
+
+
+
+    <script src="Game.js"></script>
+</body>
+
+</html>
