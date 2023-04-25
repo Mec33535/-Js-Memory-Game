@@ -31,16 +31,6 @@ addButton.addEventListener("click", function (e) {
 
 //Reset tuşu
 delButton.addEventListener("click", function (e) {
-
-    //     for (var i = 0; i < 9; i++) {
-
-    //         let coloredGrid = document.querySelectorAll(".grid-item")[i];
-    //         coloredGrid.classList = "grid-item"
-    //     }
-    //     clickCount = 0;
-    //     sessionStorage.clear()
-    //     location.reload() //f5
-    //     e.preventDefault()
     restartFunc(gridItemsCount)
 })
 
@@ -61,49 +51,47 @@ resButton.addEventListener("click", function (e) {
 
         redColor()
         console.log("Başlatılmadı veya Seçim yapılmadı..")
-        //return;
+        return
     }
+    // toChoose ile toFind arraylerinin birbirlerinden farklı değerleri= diff
+    const diff = toChooseData.filter(x => !toFindData.includes(x));
 
-    for (let i = 0; i < toFindData.length; i++) {
-        if (!toChooseData.includes(toFindData[i])) {
-            const wrongAnswer = document.createElement("div")
-            wrongAnswer.textContent = "BİLEMEDİN..!"
-            // wrongAnswer.className = ""
-            resDiv.appendChild(wrongAnswer)
+    if (diff.length !== 0) {
+        const wrongAnswer = document.createElement("div")
+        wrongAnswer.textContent = "BİLEMEDİN..!"
+        resDiv.appendChild(wrongAnswer)
 
+        setTimeout(() => {
+            document.querySelector(".results").removeChild(wrongAnswer);
+            restartFunc(gridItemsCount); return
+        }, setTimeoutInput);
+
+        redColor()
+        console.log("Bilemedin!");
+
+    }
+    else {
+        const correctAnswer = document.createElement("div")
+        correctAnswer.textContent = "BİLDİN..!"
+        resDiv.appendChild(correctAnswer)
+
+        gridItems.forEach(gridItem => {
+            gridItem.classList.add('bg-same');
             setTimeout(() => {
-                document.querySelector(".results").removeChild(wrongAnswer);
+                gridItem.classList.remove('bg-same');
                 restartFunc(gridItemsCount); return
+
             }, setTimeoutInput);
+        });
 
-            redColor()
-            console.log("Bilemedin!");
-            break;
-        }
-        else {
-            const correctAnswer = document.createElement("div")
-            correctAnswer.textContent = "BİLDİN..!"
-            resDiv.appendChild(correctAnswer)
+        setTimeout(() => {
+            document.querySelector(".results").removeChild(correctAnswer);
+        }, setTimeoutInput);
 
-            gridItems.forEach(gridItem => {
-                gridItem.classList.add('bg-same');
-                setTimeout(() => {
-                    gridItem.classList.remove('bg-same');
-                    restartFunc(gridItemsCount); return
-
-                }, setTimeoutInput);
-            });
-
-            setTimeout(() => {
-                document.querySelector(".results").removeChild(correctAnswer);
-            }, setTimeoutInput);
-
-            break;
-        }
     }
-
     e.preventDefault()
-})
+}
+)
 
 //gridItems boyutunda random array'im
 function getRandomArray(y) {
