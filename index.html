@@ -12,8 +12,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
-            width: 300px;
-            height: 300px;
+            width: 500px;
+            height: 500px;
         }
 
         .grid-container a {
@@ -70,11 +70,33 @@
         <div class="delButton">
             <input type="button" value="Reset">
         </div>
+        <br>
+        <!-- <div class="ezZorlukButton">
+            <input type="button" value="Kolay">
+        </div>
+        <div class="midZorlukButton">
+            <input type="button" value="Orta">
+        </div>
+        <div class="hardZorlukButton">
+            <input type="button" value="Zor">
+        </div>
+        <div class="xdZorlukButton">
+            <input type="button" value="XD">
+        </div> -->
+
     </div>
+    <label for="grid-size">Select a grid size:</label>
+    <select id="grid-size">
+        <option value="3">3x3</option>
+        <option value="4">4x4</option>
+        <option value="5">5x5</option>
+        <option value="6">6x6</option>
+        <option value="7">7x7</option>
+        <!-- diğer boyutlar burada yer alabilir -->
+    </select>
     <div class="results">
 
     </div>
-
 
 
 
