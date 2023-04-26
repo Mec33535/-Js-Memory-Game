@@ -94,6 +94,21 @@
         <option value="7">7x7</option>
         <!-- diğer boyutlar burada yer alabilir -->
     </select>
+    <form class="levels">
+        <input type="radio" id="ezZorlukButton" name="zorluk" value="Ez">
+        <label for="ezZorlukButton">Ez</label><br>
+        <input type="radio" id="midZorlukButton" name="zorluk" value="Mid">
+        <label for="midZorlukButton">Mid</label><br>
+        <input type="radio" id="hardZorlukButton" name="zorluk" value="Hard">
+        <label for="hardZorlukButton">Hard</label><br>
+        <input type="radio" id="xdZorlukButton" name="zorluk" value="XD">
+        <label for="xdZorlukButton">XD</label><br>
+
+        <label for="vol">Kare sayısı.. (between 5 and 20):</label><br>
+        <input type="range" id="vol" name="vol" min="6" max="21"><br>
+
+        <input type="submit" class="levelSubmit" value="Zorluğu Kaydet">
+    </form>
     <div class="results">
 
     </div>
