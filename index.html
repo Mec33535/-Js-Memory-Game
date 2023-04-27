@@ -7,48 +7,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@400;700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
+        body {
+            margin-top: 50px;
+        }
+
+        * {
+            background-color: #00FFCA;
+            font-size: 1.25rem;
+            font-family: 'Gemunu Libre', sans-serif;
+        }
+
         .grid-container {
+            box-sizing: border-box;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             width: 500px;
             height: 500px;
+            margin: 0 auto 5px;
+            /* border: 1px solid black; */
         }
 
         .grid-container a {
             display: flex;
             /* border: 1px solid black; */
+            border-radius: 5%;
             text-decoration: none;
             justify-content: center;
             align-items: center;
+        }
 
+        .options-container {
+            width: 500px;
+            margin: 0 auto 5px;
+        }
+
+        .form-container {
+            text-align: center;
+        }
+
+        .form-container .levelSubmit {
+            width: 100%;
+            height: 2.5rem;
+            background-color: aquamarine;
+        }
+
+        /* 1başlat, 2result, 3reset */
+        .butonlar {
+            display: flex;
+            justify-content: space-around;
+            margin: 0 auto 5px;
+        }
+
+        .butonlar div {
+            width: 33%;
+        }
+
+        .styleButtons {
+            border-radius: 10px;
+            background-color: aqua;
+            border-color: white;
+            width: 100%;
+            height: 60px;
+        }
+
+        .styleButtons:hover {
+            background-color: rgb(0, 235, 235);
+        }
+
+        .styleButtons:active {
+            border-color: aqua;
+            font-weight: bold;
+            color: rgb(0, 215, 215);
+            background-color: white
+        }
+
+        #select-size {
+            text-align: center;
+        }
+
+        #grid-size {
+            width: 50%;
+            text-align: center;
+            background-color: rgb(127, 255, 212);
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        #grid-size:hover {
+            background-color: rgb(127, 235, 192);
+        }
+
+        #grid-size option {
+            font-weight: bold;
+            /* font-size: 2rem; */
+            background-color: rgb(127, 235, 192);
+        }
+
+        #vol {
+            width: 75%;
         }
 
         .bg-white {
             background-color: white;
-
         }
 
         .bg-blue {
-            background-color: blue;
-
+            background-color: rgb(106, 106, 212);
         }
 
         .bg-red {
 
-            background-color: red;
-
+            background-color: rgb(197, 135, 192);
         }
 
         .bg-same {
-            background-color: chartreuse;
+            background-color: rgb(122, 196, 159);
+        }
+
+        .results {
+            /* background: none; */
+            /* background-color: rgba(0, 0, 0, 0); */
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            top: -10px;
         }
     </style>
 </head>
 
 <body>
 
+    <div class="results">
+
+    </div>
     <div class="grid-container">
         <a href="#" class="grid-item">0</a>
         <a href="#" class="grid-item">1</a>
@@ -60,59 +161,52 @@
         <a href="#" class="grid-item">7</a>
         <a href="#" class="grid-item">8</a>
     </div>
-    <div class="butonlar" style="display: flex;">
-        <div class="addButton">
-            <input type="button" value="Başlat">
-        </div>
-        <div class="resultButton">
-            <input type="button" value="Result">
-        </div>
-        <div class="delButton">
-            <input type="button" value="Reset">
-        </div>
-        <br>
-        <!-- <div class="ezZorlukButton">
-            <input type="button" value="Kolay">
-        </div>
-        <div class="midZorlukButton">
-            <input type="button" value="Orta">
-        </div>
-        <div class="hardZorlukButton">
-            <input type="button" value="Zor">
-        </div>
-        <div class="xdZorlukButton">
-            <input type="button" value="XD">
-        </div> -->
+    <div class="options-container">
 
+        <div class="butonlar">
+            <div class="addButton">
+                <input type="button" value="Start" class="styleButtons">
+            </div>
+            <div class="resultButton">
+                <input type="button" value="Result" class="styleButtons">
+            </div>
+            <div class="delButton">
+                <input type="button" value="Reset" class="styleButtons">
+            </div>
+            <br>
+
+        </div>
+        <div id="select-size">
+            <i class="fa-solid fa-arrow-down" style="color: #088395;"></i>
+            <label for="grid-size">Matris büyüklüğünü seçiniz</label>
+            <i class="fa-solid fa-arrow-down" style="color: #088395;"></i><br>
+            <select id="grid-size">
+                <option value="3">3x3</option>
+                <option value="4">4x4</option>
+                <option value="5">5x5</option>
+                <option value="6">6x6</option>
+                <option value="7">7x7</option>
+            </select>
+        </div>
+
+        <form class="levels form-container">
+            <input type="radio" id="ezZorlukButton" name="zorluk" value="Ez">
+            <label for="ezZorlukButton">Ez</label>
+            <input type="radio" id="midZorlukButton" name="zorluk" value="Mid">
+            <label for="midZorlukButton">Mid</label>
+            <input type="radio" id="hardZorlukButton" name="zorluk" value="Hard">
+            <label for="hardZorlukButton">Hard</label>
+            <input type="radio" id="xdZorlukButton" name="zorluk" value="XD">
+            <label for="xdZorlukButton">XD</label><br>
+
+            <i class="fa-solid fa-arrow-down" style="color: #088395;"></i>
+            <label for="vol">Kare sayısını seçiniz..(5 ile 20 arasında):</label>
+            <i class="fa-solid fa-arrow-down" style="color: #088395;"></i><br>
+            <input type="range" id="vol" name="vol" min="6" max="21"><br>
+
+            <input type="submit" class="levelSubmit styleButtons" value="Zorluğu Kaydet">
+        </form>
     </div>
-    <label for="grid-size">Select a grid size:</label>
-    <select id="grid-size">
-        <option value="3">3x3</option>
-        <option value="4">4x4</option>
-        <option value="5">5x5</option>
-        <option value="6">6x6</option>
-        <option value="7">7x7</option>
-        <!-- diğer boyutlar burada yer alabilir -->
-    </select>
-    <form class="levels">
-        <input type="radio" id="ezZorlukButton" name="zorluk" value="Ez">
-        <label for="ezZorlukButton">Ez</label><br>
-        <input type="radio" id="midZorlukButton" name="zorluk" value="Mid">
-        <label for="midZorlukButton">Mid</label><br>
-        <input type="radio" id="hardZorlukButton" name="zorluk" value="Hard">
-        <label for="hardZorlukButton">Hard</label><br>
-        <input type="radio" id="xdZorlukButton" name="zorluk" value="XD">
-        <label for="xdZorlukButton">XD</label><br>
-
-        <label for="vol">Kare sayısı.. (between 5 and 20):</label><br>
-        <input type="range" id="vol" name="vol" min="6" max="21"><br>
-
-        <input type="submit" class="levelSubmit" value="Zorluğu Kaydet">
-    </form>
-    <div class="results">
-
-    </div>
-
 
 
     <script src="Game.js"></script>

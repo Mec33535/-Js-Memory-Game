@@ -1,6 +1,7 @@
 //Memory Game
 //Yapılacaklar
 //--Hangisinin yanlış olduğunun gösterimi
+//--Score board 
 //----------------------------------------------------------------
 let gridSizeSelect = document.getElementById('grid-size');
 let myDiv = document.querySelector(".grid-container");
@@ -16,12 +17,13 @@ let gridItemsCount = gridItems.length;
 
 let setTimeoutInput = 1000
 let reactionTimeInput = 1500
-let clickCountInput = 0
+let clickCountInput
 let clickCount = 0
 
 volInput.addEventListener('input', function () {
     clickCountInput = this.value;
     console.log(clickCountInput);
+    //Çubuğun yanına değerini göstermek gerekiyor.
 });
 
 //Mavi yanma süresi
@@ -53,7 +55,7 @@ levelbutton.addEventListener("click", function (e) {
 window.addEventListener("DOMContentLoaded", function () {
 
     levelbutton.click();
-    clickCountInput = 6
+    clickCountInput = 5
     gridSizeSelect.value = "3";
     createGrid(3);
 });
@@ -88,7 +90,8 @@ function createGrid(size) {
     gridItems.forEach(function (item) {
         item.addEventListener("click", function () {
 
-            if (clickCount >= clickCountInput) {
+            //Çünkü bir eksiği kadar tıklama hakkı veriyor. Inan bilmiyorum
+            if (clickCount >= clickCountInput - 1) {
                 return
             }
             if (!sessionStorage.getItem("clicked")) {
@@ -118,7 +121,6 @@ addButton.addEventListener("click", function (e) {
         addButton.disabled = true;
     }
     else {
-        // 1 eksiği kadar kare yanıyor.
         markedGridItems(clickCountInput);
         e.preventDefault();
     }
@@ -136,7 +138,7 @@ resButton.addEventListener("click", function (e) {
     let toChooseData = JSON.parse(sessionStorage.getItem("clicked"))
 
     if (toFindData === null || toChooseData === null) {
-        const notStarted = document.createElement("div")
+        const notStarted = document.createElement("h3")
         notStarted.textContent = "BAŞLATILMADI VEYA SEÇİM YAPILMADI...!"
         resDiv.appendChild(notStarted)
         setTimeout(() => {
@@ -155,7 +157,7 @@ resButton.addEventListener("click", function (e) {
     //Diff2 Yanıp da tıklanmayanları arrayleri 
 
     if (diff1.length !== 0 || diff2.length !== 0) {
-        const wrongAnswer = document.createElement("div")
+        const wrongAnswer = document.createElement("h3")
         wrongAnswer.textContent = "BİLEMEDİN..!"
         resDiv.appendChild(wrongAnswer)
         setTimeout(() => {
@@ -168,7 +170,7 @@ resButton.addEventListener("click", function (e) {
 
     }
     else {
-        const correctAnswer = document.createElement("div")
+        const correctAnswer = document.createElement("h3")
         correctAnswer.textContent = "BİLDİN..!"
         resDiv.appendChild(correctAnswer)
 
@@ -200,14 +202,11 @@ function getRandomArray(y) {
         rndmArray.push(i);
     }
     rndmArray.sort(() => Math.random() - 0.5);
-    // console.log(rndmArray)
     return rndmArray;
 }
 
 //addButton'a tıklanması fonksiyonu
 function markedGridItems(x) {
-    // console.log(clickCountInput)
-    // console.log(reactionTimeInput)
     let randomArray = getRandomArray()
     sessionStorage.removeItem('sessionKey');
 
